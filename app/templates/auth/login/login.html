@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block title %}Entrar | Anime Mania{% endblock %} {% block meta_description %}Entre na sua conta do Anime Mania.{% endblock %} {% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <p class="eyebrow mb-2">Que bom ter você de volta</p>
+                    <h1 class="h2 mb-4">Entrar</h1>
+                    <form method="post" action="{{ url_for('auth.login') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="mb-3">
+                            <label class="form-label" for="email">E-mail</label>
+                            <input class="form-control" id="email" name="email" type="email" maxlength="254" autocomplete="email" value="{{ request.form.get('email', '') }}" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label" for="password">Senha</label>
+                            <input class="form-control" id="password" name="password" type="password" autocomplete="current-password" required>
+                        </div>
+                        <button class="btn btn-warning w-100 fw-semibold" type="submit">Entrar</button>
+                    </form>
+                    <p class="mb-2 mt-4 text-center">
+                        <a href="{{ url_for('auth.password_recovery_request') }}">Esqueci minha senha</a>
+                    </p>
+                    <p class="mb-0 text-center">
+                        Ainda não tem conta?
+                        <a href="{{ url_for('auth.register') }}">Cadastre-se</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

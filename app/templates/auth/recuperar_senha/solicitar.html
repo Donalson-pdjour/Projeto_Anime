@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Recuperar senha | Anime Mania{% endblock %} {% block meta_description %}Solicite um link para redefinir sua senha.{% endblock %} {% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <p class="eyebrow mb-2">Recupere o acesso</p>
+                    <h1 class="h2 mb-4">Esqueci minha senha</h1>
+                    <form method="post" action="{{ url_for('auth.password_recovery_request') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="mb-4">
+                            <label class="form-label" for="email">E-mail cadastrado</label>
+                            <input class="form-control" id="email" name="email" type="email" maxlength="254" autocomplete="email" value="{{ request.form.get('email', '') }}" required>
+                        </div>
+                        <button class="btn btn-warning w-100 fw-semibold" type="submit">Enviar link de recuperação</button>
+                    </form>
+                    <p class="mb-0 mt-4 text-center">
+                        Lembrou da senha?
+                        <a href="{{ url_for('auth.login') }}">Voltar para o login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

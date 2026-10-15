@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Anime Mania | Notícias, críticas e animes{% endblock %}
+{% block meta_description %}Confira notícias, críticas e guias sobre animes no Anime Mania.{% endblock %}
+
+{% block content %}
+    <section class="hero-section">
+        <div class="container py-5">
+            <p class="eyebrow mb-2">Seu espaço para falar de anime</p>
+            <h1 class="display-4 fw-bold">Anime Mania</h1>
+            <p class="lead col-lg-8 mb-0">
+                Notícias, críticas e matérias especiais para quem acompanha o universo dos animes.
+            </p>
+        </div>
+    </section>
+
+    <section class="container py-5" id="publicacoes" aria-labelledby="featured-heading">
+        <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-2 mb-4">
+            <div>
+                <p class="eyebrow mb-1">Do nosso acervo</p>
+                <h2 class="h1 mb-0" id="featured-heading">Em destaque</h2>
+            </div>
+            <p class="text-secondary mb-0">Matérias do protótipo original, preservadas para migração.</p>
+        </div>
+
+        <div class="row g-4">
+            {% for article in featured_articles %}
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <article class="card article-card h-100">
+                        <a href="{{ article.href }}" class="article-card-link">
+                            <img
+                                src="{{ url_for('static', filename='images/' ~ article.cover) }}"
+                                class="card-img-top article-image"
+                                alt="{{ article.cover_alt }}"
+                                loading="lazy">
+                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge text-bg-warning align-self-start mb-3">{{ article.category }}</span>
+                            <h3 class="h5 card-title">
+                                <a href="{{ article.href }}" class="stretched-link article-title-link">
+                                    {{ article.title }}
+                                </a>
+                            </h3>
+                        </div>
+                    </article>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section class="about-section py-5" id="sobre" aria-labelledby="about-heading">
+        <div class="container">
+            <h2 class="h3" id="about-heading">Sobre o Anime Mania</h2>
+            <p class="mb-0 col-lg-8">
+                Um projeto dedicado a reunir conteúdo e novidades sobre animes. As páginas e publicações
+                estão sendo migradas gradualmente para uma aplicação Flask.
+            </p>
+        </div>
+    </section>
+{% endblock %}

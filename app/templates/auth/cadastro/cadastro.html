@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Criar conta | Anime Mania{% endblock %}
+{% block meta_description %}Crie sua conta no Anime Mania.{% endblock %}
+
+{% block content %}
+    <section class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body p-4 p-md-5">
+                        <p class="eyebrow mb-2">Faça parte da comunidade</p>
+                        <h1 class="h2 mb-4">Criar conta</h1>
+                        <form method="post" action="{{ url_for('auth.register') }}">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                            <div class="mb-3">
+                                <label class="form-label" for="name">Nome</label>
+                                <input
+                                    class="form-control"
+                                    id="name"
+                                    name="name"
+                                    type="text"
+                                    maxlength="120"
+                                    autocomplete="name"
+                                    value="{{ request.form.get('name', '') }}"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="email">E-mail</label>
+                                <input
+                                    class="form-control"
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    maxlength="254"
+                                    autocomplete="email"
+                                    value="{{ request.form.get('email', '') }}"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label" for="password">Senha</label>
+                                <input
+                                    class="form-control"
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    minlength="8"
+                                    maxlength="128"
+                                    autocomplete="new-password"
+                                    aria-describedby="password-help"
+                                    required>
+                                <div class="form-text" id="password-help">Use entre 8 e 128 caracteres.</div>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label" for="confirm_password">Confirme a senha</label>
+                                <input
+                                    class="form-control"
+                                    id="confirm_password"
+                                    name="confirm_password"
+                                    type="password"
+                                    minlength="8"
+                                    maxlength="128"
+                                    autocomplete="new-password"
+                                    required>
+                            </div>
+                            <button class="btn btn-warning w-100 fw-semibold" type="submit">Criar conta</button>
+                        </form>
+                        <p class="mb-0 mt-4 text-center">
+                            Já tem uma conta?
+                            <a href="{{ url_for('auth.login') }}">Entrar</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

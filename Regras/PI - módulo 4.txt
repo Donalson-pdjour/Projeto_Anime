@@ -1,0 +1,23 @@
+Aula 1 - PI
+
+- criar um sistema web
+- tema livre
+- mínimo 8 telas
+ - futuramente vai ter back-end e banco de dados
+- responsividade obrigatório
+- pesquisar o uso de funcionalidades diferentes ex: javascript
+#################################
+Aula 2 - PI
+
+Regras:
+- não pode copiar do colega
+- não pode utilizar um sistema pronto da internet
+- não pode utilizar o modelo de sistema do prof
+- não pode utilizar a estrutura do mesmo sistema do site senac tech que você criou
+
+Entrega da primeira demanda:
+- enviar por e-mail até a próxima sexta um esboço do projeto (no mínimo com a index criada), e a documentação técnica do início do projeto.
+
+mglmatiolla@gmail.com
+Assunto: Primeira demanda PI - turma noite
+corpo do e-mail: nome do aluno + anexo documentação técnica + anexo pojeto

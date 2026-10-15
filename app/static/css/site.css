@@ -1,0 +1,152 @@
+:root {
+    color-scheme: light;
+    --anime-ink: #25252b;
+    --anime-purple: #39224f;
+    --anime-purple-dark: #261637;
+    --anime-gold: #f5b82e;
+    --anime-paper: #f7f6f8;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--anime-paper);
+    color: var(--anime-ink);
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.skip-link {
+    position: absolute;
+    z-index: 1100;
+    top: 0.5rem;
+    left: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: #fff;
+    color: var(--anime-ink);
+}
+
+.site-navbar {
+    background: var(--anime-purple-dark);
+}
+
+.navbar-brand img {
+    display: block;
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.hero-section {
+    background: linear-gradient(115deg, var(--anime-purple-dark), var(--anime-purple));
+    color: #fff;
+}
+
+.hero-section .container {
+    padding-top: clamp(3rem, 9vw, 6rem) !important;
+    padding-bottom: clamp(3rem, 9vw, 6rem) !important;
+}
+
+.eyebrow {
+    color: var(--anime-purple);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.hero-section .eyebrow {
+    color: var(--anime-gold);
+}
+
+.article-card {
+    overflow: hidden;
+    border: 0;
+    box-shadow: 0 0.5rem 1.5rem rgb(37 37 43 / 8%);
+}
+
+.article-card-link {
+    color: inherit;
+}
+
+.article-title-link {
+    position: relative;
+    z-index: 1;
+    color: inherit;
+    text-decoration: none;
+}
+
+.article-title-link:hover,
+.article-title-link:focus-visible {
+    color: var(--anime-purple);
+    text-decoration: underline;
+}
+
+.article-image {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: #e9e6ec;
+}
+
+.article-content {
+    max-width: 960px;
+}
+
+.article-header {
+    max-width: 760px;
+}
+
+.article-cover {
+    display: block;
+    width: min(100%, 760px);
+    max-height: 480px;
+    object-fit: cover;
+}
+
+.article-inline-figure img {
+    max-height: 560px;
+    object-fit: contain;
+}
+
+.article-copy {
+    max-width: 760px;
+    font-size: 1.075rem;
+    line-height: 1.8;
+}
+
+.release-section + .release-section {
+    border-top: 1px solid #ded9e3;
+}
+
+.video-frame {
+    max-width: 760px;
+    margin-top: 1.5rem;
+    background: #17131c;
+}
+
+.about-section {
+    background: #eeebf1;
+}
+
+.site-footer {
+    background: var(--anime-purple-dark);
+    color: #fff;
+}
+
+.site-footer a {
+    color: var(--anime-gold);
+}
+
+@media (max-width: 575.98px) {
+    .navbar-brand img {
+        width: 104px;
+    }
+}

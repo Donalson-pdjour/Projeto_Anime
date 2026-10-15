@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} | Anime Mania{% endblock %}
+{% block meta_description %}{{ article.subtitle }}{% endblock %}
+
+{% block content %}
+    <article class="container py-5 article-content">
+        <header class="article-header mb-4">
+            <p class="eyebrow mb-2">Notícias e lançamentos</p>
+            <h1 class="display-5 fw-bold">{{ article.title }}</h1>
+            <p class="lead text-secondary">{{ article.subtitle }}</p>
+        </header>
+
+        <img
+            class="img-fluid rounded article-cover mb-4"
+            src="{{ url_for('static', filename='images/' ~ article.cover) }}"
+            alt="{{ article.cover_alt }}">
+
+        <div class="article-copy">
+            {% for paragraph in article.introduction %}
+                <p>{{ paragraph }}</p>
+            {% endfor %}
+        </div>
+
+        <div class="release-list">
+            {% for release in article.releases %}
+                <section class="release-section py-4" aria-labelledby="release-{{ loop.index }}">
+                    <h2 class="h3 mb-3" id="release-{{ loop.index }}">{{ release.title }}</h2>
+                    <div class="article-copy">
+                        {% for paragraph in release.paragraphs %}
+                            <p>{{ paragraph }}</p>
+                        {% endfor %}
+                    </div>
+                    <div class="ratio ratio-16x9 video-frame">
+                        <iframe
+                            src="https://www.youtube-nocookie.com/embed/{{ release.video_id }}"
+                            title="Vídeo sobre {{ release.title }}"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen></iframe>
+                    </div>
+                </section>
+            {% endfor %}
+        </div>
+    </article>
+{% endblock %}

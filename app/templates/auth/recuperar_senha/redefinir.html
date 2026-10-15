@@ -1,0 +1,26 @@
+{% extends "base.html" %} {% block title %}Redefinir senha | Anime Mania{% endblock %} {% block meta_description %}Crie uma nova senha para sua conta do Anime Mania.{% endblock %} {% block content %}
+<section class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-5">
+            <div class="card border-0 shadow-sm">
+                <div class="card-body p-4 p-md-5">
+                    <p class="eyebrow mb-2">Proteja sua conta</p>
+                    <h1 class="h2 mb-4">Redefinir senha</h1>
+                    <form method="post" action="{{ url_for('auth.password_reset', token=token) }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="mb-3">
+                            <label class="form-label" for="password">Nova senha</label>
+                            <input class="form-control" id="password" name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label" for="confirm_password">Confirmar nova senha</label>
+                            <input class="form-control" id="confirm_password" name="confirm_password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required>
+                        </div>
+                        <button class="btn btn-warning w-100 fw-semibold" type="submit">Salvar nova senha</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

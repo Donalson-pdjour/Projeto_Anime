@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}{{ article.title }} | Anime Mania{% endblock %}
+{% block meta_description %}{{ article.blocks[0].text }}{% endblock %}
+
+{% block content %}
+    <article class="container py-5 article-content">
+        <header class="article-header mb-4">
+            <p class="eyebrow mb-2">{{ article.category }}</p>
+            <h1 class="display-5 fw-bold">{{ article.title }}</h1>
+        </header>
+
+        <img
+            class="img-fluid rounded article-cover mb-4"
+            src="{{ url_for('static', filename='images/' ~ article.cover) }}"
+            alt="{{ article.cover_alt }}">
+
+        <div class="article-copy">
+            {% for block in article.blocks %}
+                {% if block.type == "heading" %}
+                    <h2 class="h3 mt-5 mb-3">{{ block.text }}</h2>
+                {% elif block.type == "paragraph" %}
+                    <p{% if block.class is defined %} class="{{ block.class }}"{% endif %}>
+                        {{ block.text }}
+                    </p>
+                {% elif block.type == "image" %}
+                    <figure class="article-inline-figure my-4">
+                        <img
+                            class="img-fluid rounded"
+                            src="{{ url_for('static', filename='images/' ~ block.src) }}"
+                            alt="{{ block.alt }}"
+                            loading="lazy">
+                        {% if block.caption is defined %}
+                            <figcaption class="small text-secondary mt-2">{{ block.caption }}</figcaption>
+                        {% endif %}
+                    </figure>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </article>
+{% endblock %}
