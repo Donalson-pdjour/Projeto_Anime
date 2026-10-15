@@ -113,7 +113,17 @@ class AppSmokeTests(unittest.TestCase):
                 finally:
                     response.close()
 
-    def test_news_page_renders_original_releases(self):
+    def test_news_page_requires_login(self):
+        response = self.client.get("/noticias")
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.headers["Location"], "/login")
+
+    def test_authenticated_user_can_access_news(self):
+        with self.client.session_transaction() as user_session:
+            user_session["user_id"] = 12
+            user_session["user_name"] = "Anime Fã"
+
         response = self.client.get("/noticias")
         content = response.get_data(as_text=True)
 

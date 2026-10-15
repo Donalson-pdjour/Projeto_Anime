@@ -165,7 +165,7 @@ tabela continuam previstas para etapas futuras.
 | Método | Rota | Finalidade |
 |---|---|---|
 | GET | `/` | Exibir a página inicial |
-| GET | `/noticias` | Listar publicações |
+| GET | `/noticias` | Exibir notícias (requer login) |
 | GET | `/publicacoes/<slug>` | Exibir uma publicação |
 | GET | `/ordem-cronologica-cavaleiros` | Exibir a matéria especial |
 | GET, POST | `/cadastro` | Exibir e processar cadastro |

@@ -1,4 +1,13 @@
-from flask import Blueprint, abort, jsonify, render_template, url_for
+from flask import (
+    Blueprint,
+    abort,
+    flash,
+    jsonify,
+    redirect,
+    render_template,
+    session,
+    url_for,
+)
 
 from app.services.articles import ARTICLES, FEATURED_ARTICLE_SLUGS
 from app.services.news import NEWS_ARTICLE
@@ -50,7 +59,11 @@ def index():
 
 @public_bp.get("/noticias")
 def news_list():
-    """Exibe a página de notícias com o artigo principal de notícias."""
+    """Exibe as notícias somente para usuários autenticados."""
+    if not session.get("user_id"):
+        flash("Faça login para acessar as notícias.", "warning")
+        return redirect(url_for("auth.login"))
+
     return render_template(
         "public/news.html",
         article=NEWS_ARTICLE,
